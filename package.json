@@ -1,0 +1,25 @@
+{
+  "name": "employee-profile-generator",
+  "version": "1.0.0",
+  "description": "Generating team profiles with node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vsjanarthani/Employee-Profile-Generator.git"
+  },
+  "author": "Janarthani V Subramaniam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vsjanarthani/Employee-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/vsjanarthani/Employee-Profile-Generator#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
