@@ -1,9 +1,6 @@
 // Creating the html page
 const generatediv = employeeArr => {
-  if (!employeeArr) {
-    return '';
-  }
-
+ console.log(employeeArr);
   return `
     <section class="container">
     <article class="boxdesign">
@@ -53,10 +50,8 @@ const generatediv = employeeArr => {
 };
 
 // Exporting module
-module.exports = templateData => {
-    // destructure page data by section
-    const { employeeData } = templateData;
-    console.log(employeeData);
+module.exports = employeeData => {
+
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -89,3 +84,13 @@ module.exports = templateData => {
     </html> 
         `;
 };
+
+
+// Icons for roles
+/* 
+
+<i class="far fa-id-badge"></i>
+<i class="fas fa-glasses"></i>
+<i class="fas fa-graduation-cap"></i>
+
+*/

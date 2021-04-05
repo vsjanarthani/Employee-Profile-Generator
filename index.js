@@ -8,7 +8,7 @@ const promptUser = employeeData => {
   Add a New Employee
   =================
   `);
-
+ // If there's no 'projects' array property, create one
     if (!employeeData) {
         employeeData = [];
     }
@@ -45,8 +45,9 @@ const promptUser = employeeData => {
                 default: false
             }
         ])
+        
         .then(response => {
-            // If there's no 'projects' array property, create one
+           
             employeeData.push(response);
             if (employeeData.confirmAddEmployee) {
                 return promptUser(employeeData);
@@ -57,9 +58,7 @@ const promptUser = employeeData => {
 };
 
 promptUser()
-    .then(promptUser)
     .then(employeeData => {
-        console.log(employeeData);
         return generateHtml(employeeData);
     })
     .then(response => {
