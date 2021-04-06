@@ -9,19 +9,19 @@ function removeList() {
 
     // console.log(githubEl);
     for (let i = 0; li = githubEl[i]; i++) {
-        if (githubEl[i].textContent === "undefined") {
+        if (githubEl[i].textContent === "GitHub: undefined") {
             li.parentNode.removeChild(li);
         }
     }
 
     for (let i = 0; li = schoolEl[i]; i++) {
-        if (schoolEl[i].textContent === "undefined") {
+        if (schoolEl[i].textContent === "School: undefined") {
         li.parentNode.removeChild(li);
     }
 }
 
     for (let i = 0; li = officeNoEl[i]; i++) {
-        if (officeNoEl[i].textContent === "undefined") {
+        if (officeNoEl[i].textContent === "Office No: undefined") {
         li.parentNode.removeChild(li);
     }
 }

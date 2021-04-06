@@ -2,11 +2,11 @@
 const generatediv = employeeArr => {
 
   return `
+  <section class="container">
       ${employeeArr
       .filter((({ role }) => role))
       .map(({ name, id, email, role, github, school, officeNo, icon }) => {
         return `
-        <section class="container">
         <article class="boxdesign">
           <div class="boxtitle">
             <h2 class="boxheading">${name}</h2>
@@ -17,16 +17,16 @@ const generatediv = employeeArr => {
             <ul class="list">
               <li>ID: ${id}</li>
               <li>Email: <a href = "mailto:${email}">${email}</a></li>
-              <li class="github">GitHub: <a href = "https://github.com/${github}">${github}</a></li>
-              <li class="school"School: ${school}</li>
+              <li class="github">GitHub: <a href = "https://github.com/${github}" target="_blank">${github}</a></li>
+              <li class="school">School: ${school}</li>
               <li class="officeNo">Office No: ${officeNo}</li>
             </ul>
           </div>
-          </article>
-          </section>
+        </article>
           `;
-        })
-        .join('')}
+      })
+      .join('')}
+    </section>
   `;
 };
 
@@ -56,23 +56,13 @@ module.exports = employeeData => {
             ${generatediv(employeeData)}
       </main>
       <div class="clear-footer"></div>
-      <footer class="text-center text-lg-start fixed-bottom text-light">
+      <footer class="text-center fixed-bottom text-lg-start text-light footer">
         <div class="text-center p-3 text-light">
-          &copy;2020 by Janarthani V Subramaniam</h3>
+          &copy;2020 Made by Janarthani V Subramaniam</h3>
         </div>
       </footer>
       <script src="script.js"></script>
     </body>
-    </html> 
+    </html>  
         `;
 };
-
-
-// Icons for roles
-/* 
-
-<i class="far fa-id-badge"></i>
-<i class="fas fa-glasses"></i>
-<i class="fas fa-graduation-cap"></i>
-
-*/

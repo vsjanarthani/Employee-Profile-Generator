@@ -1,5 +1,4 @@
 // Require section
-const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
@@ -10,7 +9,7 @@ const { writeFile, copyFile, copyJSFile } = require('./utils/generate-site');
 const promptUser = employeeData => {
     console.log(`
   =================
-  Add a New Employee
+  Add Employee Data
   =================
   `);
     // If there's no 'projects' array property, create one
@@ -57,10 +56,9 @@ const promptUser = employeeData => {
                 name: 'role',
                 message: 'Select the role of the employee',
                 choices: [
-                    'Employee',
-                    'Engineer',
                     'Manager',
-                    'Intern'
+                    'Engineer',
+                    'Intern',
                 ]
             },
             {
@@ -91,20 +89,17 @@ const promptUser = employeeData => {
 
         .then(response => {
 
-            if (response.role === "Employee") {
-                const employee = new Employee(response.name, response.id, response.email);
-                employeeData.push(employee);
-             } else if (response.role === "Engineer") {
+            if (response.role === "Engineer") {
                 const engineer = new Engineer(response.name, response.id, response.email, response.github);
                 employeeData.push(engineer);
-             } else if (response.role === "Manager") {
+            } else if (response.role === "Manager") {
                 const manager = new Manager(response.name, response.id, response.email, response.officeNo);
                 employeeData.push(manager);
-             } else if (response.role === "Intern") {
+            } else if (response.role === "Intern") {
                 const intern = new Intern(response.name, response.id, response.email, response.school);
                 employeeData.push(intern);
             }
-            
+
             if (response.confirmAddTeamMember) {
                 // console.log(response.confirmAddTeamMember);
                 return promptUser(employeeData);

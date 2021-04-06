@@ -10,10 +10,7 @@ html {
 
 body {
   font-family: Helvetica, Arial, sans-serif;
-  color: #666666;
-   font-size: 14px;
-   line-height: 1.8;
-   font-weight: normal;
+  height:100%;
 }
 
 /* Mobile First Design */
@@ -26,46 +23,114 @@ header {
   align-content: center;
   flex-wrap: wrap;
   width: 100%;
+  height: 15%;
+  background-color: #45ADA8;
 }
 
 header h1 {
   width: 100%;
   padding: 50px;
 	text-align: center;
-	color: #b8ccc5;
+	color: snow;
   font-weight: 600;
-  font-size: 48px;
+  font-size: 40px;
   font-variant: small-caps;
 }
 
 /* Main Section */
+main {
+  height:70%;
+  width:100%;
+}
+
 .container {
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: space-between;
   align-items: stretch; 
-  flex-grow: inherit; 
 }
 
 .boxdesign {
-	width: 30%;
-    height: auto;
+	width: 80%;
+  max-width: 250px;
+  height: auto;
 	background-color: #ffffff;
 	border-radius: 30px;
-	padding: 20px;
-    margin: 20px;
-    box-shadow: 0px 0px 8px 0px;
+	padding: 15px 0 15px 0;
+  margin: 20px;
+  box-shadow: 0px 0px 8px 0px;
+}
+
+.boxtitle,
+.boxbody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .boxheading {
-	width: 100%;
 	text-align: center;
-	margin-top: 20px;	
-	color:#2aaf80;
+	color:#45ADA8;
   font-weight: bolder;
-  font-style: italic;
   font-variant: small-caps;
+  padding: 5px 10px 0 10px;
 }
 
+.boxheading1 {
+  font-variant: small-caps;
+  font-size: large;
+}
+
+.list {
+  width: 90%;
+  list-style-type: none;
+  line-height: 2;
+  margin: 0 10px 0 10px;
+  padding:  0 10px 0 10px;
+}
+
+.list li {
+  padding: 10px 0 10px 0;
+  border-bottom: 1px dotted grey;
+  font-size: small;
+}
+
+.list li a {
+  color: purple;
+  cursor: pointer;
+  font-size: small;
+}
+
+/* Footer Section */
+
+.footer {
+  background-color: #594F4F;
+  position: sticky;
+}
+
+@media screen and (min-width: 600px) {
+
+  .container {
+    margin: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .boxdesign {
+    max-width: 350px;
+  }
+
+  .list li,
+  .list li a {
+    font-size: medium;
+  }
+
+  .footer {
+    position: fixed;
+  }
+ 
+}
