@@ -4,7 +4,7 @@ describe('gets manager data', () => {
     let manager1;
 
     beforeAll(() => {
-        manager1 = new Manager("Janarthani", 1055356, "janarthani.vs@gmail.com", 12560);
+        manager1 = new Manager("Janarthani", "1055356", "janarthani.vs@gmail.com", "12560");
     });
 
     it('should return the  name passed in to the manager constructor function', () => {
@@ -14,8 +14,8 @@ describe('gets manager data', () => {
     });
 
     it('should return the ID passed in to the manager constructor function', () => {
-        expect(manager1.id).toEqual(expect.any(Number));
-        expect(manager1.id).toEqual(1055356);
+        expect(manager1.id).toEqual(expect.any(String));
+        expect(manager1.id).toEqual('1055356');
     });
 
     it('should return the email passed in to the manager constructor function', () => {
@@ -25,8 +25,8 @@ describe('gets manager data', () => {
     });
 
     it('should return the office no passed in to the manager constructor function', () => {
-        expect(manager1.officeNo).toEqual(expect.any(Number));
-        expect(manager1.officeNo).toEqual(12560);
+        expect(manager1.officeNo).toEqual(expect.any(String));
+        expect(manager1.officeNo).toEqual('12560');
     });
 
     it('should return the name passed in to the manager constructor function', () => {
@@ -34,7 +34,7 @@ describe('gets manager data', () => {
     });
 
     it('should return the ID passed in to the manager constructor function', () => {
-        expect(manager1.getId()).toBe(1055356);
+        expect(manager1.getId()).toBe('1055356');
     });
 
     it('should return the email passed in to the manager constructor function', () => {
@@ -42,7 +42,7 @@ describe('gets manager data', () => {
     });
 
     it('should return the office number passed in to the manager constructor function', () => {
-        expect(manager1.getofficeNo()).toBe(12560);
+        expect(manager1.getofficeNo()).toBe('12560');
     });
 
     it('should return the role as manager', () => {

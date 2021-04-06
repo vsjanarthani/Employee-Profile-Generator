@@ -1,49 +1,27 @@
 // Creating the html page
 const generatediv = employeeArr => {
- console.log(employeeArr);
   return `
     <section class="container">
     <article class="boxdesign">
       ${employeeArr
-      .filter(({ feature }) => feature)
-      .map(({ name, id, email }) => {
+      .filter((({ role }) => role))
+      .map(({ name, id, email, role, github, school, officeNo }) => {
         return `
           <div class="boxtitle">
             <h2 class="boxheading">${name}</h2>
-            <h3 class="boxheading1"><i>Icon</i>Assistant Manager</h3>
+            <h3 class="boxheading1"><i>Icon</i>${role}</h3>
           </div>
           <hr>
           <div class="boxbody">
             <ul>
               <li>${id}</li>
               <li>Email:<a href = "${email}"></a><i class="fas fa-at"></i>${email}</a></li>
-              // <li>List3</li>
+              <li>${github}||${school}||${officeNo}</li>
             </ul>
           </div>
           `;
         })
         .join('')}
-
-        ${employeeArr
-          .filter(({ feature }) => feature)
-          .map(({ name, id, email }) => {
-            return `
-              <div class="boxtitle">
-                <h2 class="boxheading">${name}</h2>
-                <h3 class="boxheading1"><i>Icon</i>Assistant Manager</h3>
-              </div>
-              <hr>
-              <div class="boxbody">
-                <ul>
-                  <li>${id}</li>
-                  <li>Email:<a href = "${email}"></a><i class="fas fa-at"></i>${email}</a></li>
-                  // <li>List3</li>
-                </ul>
-              </div>
-              `;
-            })
-            .join('')}
-
     </article>
     </section>
   `;

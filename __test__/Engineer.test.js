@@ -4,7 +4,7 @@ describe('gets engineer data', () => {
     let engineer1;
 
     beforeAll(() => {
-        engineer1 = new Engineer("Janarthani", 1055356, "janarthani.vs@gmail.com", 'github.git');
+        engineer1 = new Engineer("Janarthani", "1055356", "janarthani.vs@gmail.com", 'github.git');
     });
 
     it('should return the  name passed in to the engineer constructor function', () => {
@@ -14,8 +14,8 @@ describe('gets engineer data', () => {
     });
 
     it('should return the ID passed in to the engineer constructor function', () => {
-        expect(engineer1.id).toEqual(expect.any(Number));
-        expect(engineer1.id).toEqual(1055356);
+        expect(engineer1.id).toEqual(expect.any(String));
+        expect(engineer1.id).toEqual('1055356');
     });
 
     it('should return the email passed in to the engineer constructor function', () => {

@@ -4,7 +4,7 @@ describe('gets intern data', () => {
     let intern1;
 
     beforeAll(() => {
-        intern1 = new Intern("Janarthani", 1055356, "janarthani.vs@gmail.com", 'UC Berkeley');
+        intern1 = new Intern("Janarthani", "1055356", "janarthani.vs@gmail.com", 'UC Berkeley');
     });
 
     it('should return the  name passed in to the intern constructor function', () => {
@@ -14,8 +14,8 @@ describe('gets intern data', () => {
     });
 
     it('should return the ID passed in to the intern constructor function', () => {
-        expect(intern1.id).toEqual(expect.any(Number));
-        expect(intern1.id).toEqual(1055356);
+        expect(intern1.id).toEqual(expect.any(String));
+        expect(intern1.id).toEqual('1055356');
     });
 
     it('should return the email passed in to the intern constructor function', () => {
@@ -34,7 +34,7 @@ describe('gets intern data', () => {
     });
 
     it('should return the ID passed in to the intern constructor function', () => {
-        expect(intern1.getId()).toBe(1055356);
+        expect(intern1.getId()).toBe('1055356');
     });
 
     it('should return the email passed in to the intern constructor function', () => {
