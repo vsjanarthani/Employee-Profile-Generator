@@ -17,7 +17,7 @@ const writeFile = fileContent => {
   });
 };
 
-// copying file
+// copying CSS file
 const copyFile = () => {
   return new Promise((resolve, reject) => {
     fs.copyFile('./src/style.css', './dist/style.css', err => {
@@ -28,10 +28,23 @@ const copyFile = () => {
 
       resolve({
         ok: true,
-        message: 'Stylesheet created!'
+        message: 'Stylesheet copied!'
       });
     });
   });
 };
 
-module.exports = { writeFile, copyFile };
+// Copying JS file
+const copyJSFile = () => {
+  return new Promise((resolve, reject) => {
+    fs.copyFile('./src/script.js', './dist/script.js', err => {
+      if (err) throw err;
+
+      resolve ({
+        ok: true,
+        message: 'script.js copied!'
+      });
+    });
+  });
+};
+module.exports = { writeFile, copyFile, copyJSFile };

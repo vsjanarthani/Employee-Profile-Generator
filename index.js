@@ -5,7 +5,7 @@ const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
 const inquirer = require('inquirer');
 const generateHtml = require('./src/html-template');
-const { writeFile, copyFile } = require('./utils/generate-site');
+const { writeFile, copyFile, copyJSFile } = require('./utils/generate-site');
 
 const promptUser = employeeData => {
     console.log(`
@@ -122,11 +122,16 @@ promptUser()
         return writeFile(response);
     })
     .then(response => {
+        console.log(response);
         return copyFile(response);
     })
-    // .then(response => {
-    //     console.log(response);
-    // })
+    .then(response => {
+        console.log(response);
+        return copyJSFile(response);
+    })
+    .then(response => {
+        console.log(response);
+    })
     .catch(err => {
         console.log(err);
     });

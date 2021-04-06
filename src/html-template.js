@@ -1,29 +1,32 @@
 // Creating the html page
 const generatediv = employeeArr => {
+
   return `
-    <section class="container">
-    <article class="boxdesign">
       ${employeeArr
       .filter((({ role }) => role))
-      .map(({ name, id, email, role, github, school, officeNo }) => {
+      .map(({ name, id, email, role, github, school, officeNo, icon }) => {
         return `
+        <section class="container">
+        <article class="boxdesign">
           <div class="boxtitle">
             <h2 class="boxheading">${name}</h2>
-            <h3 class="boxheading1"><i>Icon</i>${role}</h3>
+            <h3 class="boxheading1"><i>${icon}</i> ${role}</h3>
           </div>
           <hr>
           <div class="boxbody">
-            <ul>
-              <li>${id}</li>
-              <li>Email:<a href = "${email}"></a><i class="fas fa-at"></i>${email}</a></li>
-              <li>${github}||${school}||${officeNo}</li>
+            <ul class="list">
+              <li>ID: ${id}</li>
+              <li>Email: <a href = "mailto:${email}">${email}</a></li>
+              <li class="github">GitHub: <a href = "https://github.com/${github}">${github}</a></li>
+              <li class="school"School: ${school}</li>
+              <li class="officeNo">Office No: ${officeNo}</li>
             </ul>
           </div>
+          </article>
+          </section>
           `;
         })
         .join('')}
-    </article>
-    </section>
   `;
 };
 
@@ -58,6 +61,7 @@ module.exports = employeeData => {
           &copy;2020 by Janarthani V Subramaniam</h3>
         </div>
       </footer>
+      <script src="script.js"></script>
     </body>
     </html> 
         `;
