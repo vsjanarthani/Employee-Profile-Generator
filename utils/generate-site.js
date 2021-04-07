@@ -11,7 +11,7 @@ const writeFile = fileContent => {
 
       resolve({
         ok: true,
-        message: 'File created!'
+        message: 'HTML File created inside "dist" folder!'
       });
     });
   });
@@ -28,7 +28,7 @@ const copyFile = () => {
 
       resolve({
         ok: true,
-        message: 'Stylesheet copied!'
+        message: 'Stylesheet copied into "dist" folder!'
       });
     });
   });
@@ -38,11 +38,14 @@ const copyFile = () => {
 const copyJSFile = () => {
   return new Promise((resolve, reject) => {
     fs.copyFile('./src/script.js', './dist/script.js', err => {
-      if (err) throw err;
+      if (err) {
+        reject (err);
+        return;
+      } 
 
       resolve ({
         ok: true,
-        message: 'script.js copied!'
+        message: 'script.js copied into "dist" folder!'
       });
     });
   });
