@@ -5,29 +5,27 @@ const Engineer = require('./lib/Engineer');
 const inquirer = require('inquirer');
 const generateHtml = require('./src/html-template');
 const { writeFile, copyFile, copyJSFile } = require('./utils/generate-site');
+const teamData = [];
 
-const promptUser = employeeData => {
+// Prompt user for manager Data
+const promptAddManager = teamData => {
     console.log(`
   =================
-  Add Employee Data
+  Add Manager Data
   =================
   `);
-    // If there's no 'projects' array property, create one
-    if (!employeeData) {
-        employeeData = [];
-    }
 
     return inquirer
         .prompt([
             {
                 type: 'input',
                 name: 'name',
-                message: 'Name of the Employee: (Required)',
+                message: 'Enter Name of the Manager: (Required)',
                 validate: nameInput => {
                     if (nameInput) {
                         return true;
                     } else {
-                        console.log('Please enter Employee name!');
+                        console.log('Please enter the name of the Manager!');
                         return false;
                     }
                 }
@@ -35,12 +33,85 @@ const promptUser = employeeData => {
             {
                 type: 'input',
                 name: 'id',
-                message: 'Enter Employee ID:'
+                message: 'Enter Employee ID of the Manager:'
             },
             {
                 type: 'input',
                 name: 'email',
-                message: 'Enter Employee Email ID:',
+                message: 'Enter Email ID of the Manager:',
+                validate: emailInput => {
+                    if (!emailInput.includes('@')) {
+                        console.log('Please enter a valid email address');
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'officeNo',
+                message: 'Enter the office no of the manager:',
+            },
+            {
+                type: 'confirm',
+                name: 'confirmAddTeamMembers',
+                message: 'Would you like to add team members?',
+                default: false
+            }
+        ])
+
+        // push the prompt response data array to the teamData object
+        .then(response => {
+            if (!teamData) {
+                teamData = [];
+            }
+            const manager = new Manager(response.name, response.id, response.email, response.officeNo);
+            teamData.push(manager);
+
+            if (response.confirmAddTeamMembers) {
+                // console.log(response.confirmAddTeamMember);
+                return promptAddteam(teamData);
+            } else {
+                return teamData;
+            }
+        });
+};
+
+// Prompt user for employee Data
+const promptAddteam = teamData => {
+    console.log(`
+  =================
+  Add Team memember 
+  =================
+  `);
+
+    return inquirer
+        .prompt([
+
+            {
+                type: 'input',
+                name: 'name',
+                message: 'Enter the name of the team member: (Required)',
+                validate: nameInput => {
+                    if (nameInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter the name of the team member');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'id',
+                message: 'Enter Employee ID of the team member:'
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'Enter Email ID of the team member:',
                 validate: emailInput => {
                     if (!emailInput.includes('@')) {
                         console.log('Please enter a valid email address');
@@ -56,7 +127,6 @@ const promptUser = employeeData => {
                 name: 'role',
                 message: 'Select the role of the employee',
                 choices: [
-                    'Manager',
                     'Engineer',
                     'Intern',
                 ]
@@ -67,12 +137,7 @@ const promptUser = employeeData => {
                 message: 'Enter the github username of the engineer:',
                 when: ({ role }) => role === 'Engineer'
             },
-            {
-                type: 'input',
-                name: 'officeNo',
-                message: 'Enter the office no of the manager:',
-                when: ({ role }) => role === 'Manager'
-            },
+
             {
                 type: 'input',
                 name: 'school',
@@ -82,7 +147,7 @@ const promptUser = employeeData => {
             {
                 type: 'confirm',
                 name: 'confirmAddTeamMember',
-                message: 'Would you like to enter another team member?',
+                message: 'Would you like to add another team member?',
                 default: false
             }
         ])
@@ -91,27 +156,24 @@ const promptUser = employeeData => {
 
             if (response.role === "Engineer") {
                 const engineer = new Engineer(response.name, response.id, response.email, response.github);
-                employeeData.push(engineer);
-            } else if (response.role === "Manager") {
-                const manager = new Manager(response.name, response.id, response.email, response.officeNo);
-                employeeData.push(manager);
-            } else if (response.role === "Intern") {
+                teamData.push(engineer);
+            } else {
                 const intern = new Intern(response.name, response.id, response.email, response.school);
-                employeeData.push(intern);
+                teamData.push(intern);
             }
 
             if (response.confirmAddTeamMember) {
                 // console.log(response.confirmAddTeamMember);
-                return promptUser(employeeData);
+                return promptAddteam(teamData);
             } else {
-                return employeeData;
+                return teamData;
             }
         });
 };
 
-promptUser()
-    .then(employeeData => {
-        return generateHtml(employeeData);
+promptAddManager()
+    .then(teamData => {
+        return generateHtml(teamData);
     })
     .then(response => {
         return writeFile(response);
