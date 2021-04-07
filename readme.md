@@ -38,7 +38,7 @@ Inorder to test, run the following command in your terminal. Please note that th
 ```npm test```
 
 ### Screenshot
-![webpage](./assets/rendered-image-of-HTML)
+![webpage](./assets/rendered-image-of-HTML.png)
 ### Questions
 If you have any questions, please reach out to the<br>
 Author: Janarthani V S <br>
